@@ -128,5 +128,10 @@ EMAIL_HOST_USER = 'kalepayal53@gmail.com'   # your Gmail
 EMAIL_HOST_PASSWORD = 'kxhj zkzv fods befs' # your App Password (not regular Gmail password)
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # local dev
+    "https://your-frontend-url.onrender.com",  # production frontend
+]
+
 

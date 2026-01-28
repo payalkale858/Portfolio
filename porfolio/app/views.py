@@ -1,35 +1,38 @@
 from django.shortcuts import render
-
-# Create your views here.
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from django.core.mail import send_mail
 from django.conf import settings
 from .serializers import ContactSerializer
+from .models import Contact
 
-@api_view(['POST'])
+@api_view(['GET','POST'])
 def contact_create(request):
-    serializer = ContactSerializer(data=request.data)
+    if request.method == 'GET':
+        contacts = Contact.objects.all()  # ✔ Fixed model name
+        serializer = ContactSerializer(contacts, many=True)
+        return Response(serializer.data)
 
+    # Only for POST
+    serializer = ContactSerializer(data=request.data)
     if serializer.is_valid():
         contact = serializer.save()
 
         # 📧 Send Email
         subject = f"New Contact Message: {contact.subject}"
         message = f"""
-        Name: {contact.name}
-        Email: {contact.email}
+Name: {contact.name}
+Email: {contact.email}
 
-        Message:
-        {contact.message}
-        """
-
+Message:
+{contact.message}
+"""
         send_mail(
             subject,
             message,
             settings.DEFAULT_FROM_EMAIL,
-            ['yourgmail@gmail.com'],  # 👈 where YOU receive email
+            ['kalepayal53@gmail.com'],  # 👈 your receiving email
             fail_silently=False,
         )
 
