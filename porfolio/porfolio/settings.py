@@ -54,11 +54,12 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "porfolio.urls"
+import os
 
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(BASE_DIR, "build")],  # React build folder
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -118,7 +119,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "build/static")]
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
@@ -127,6 +130,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'kalepayal53@gmail.com'   # your Gmail
 EMAIL_HOST_PASSWORD = 'kxhj zkzv fods befs' # your App Password (not regular Gmail password)
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
 
 
 CORS_ALLOWED_ORIGINS = [
