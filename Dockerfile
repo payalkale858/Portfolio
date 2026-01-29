@@ -1,24 +1,31 @@
-# Step 2: Setup Django backend
-FROM python:3.12-slim
+# ---------- React build stage ----------
+FROM node:18 AS react-build
+WORKDIR /app/frontend
 
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
+# Copy only package files first
+COPY backend/package*.json ./
+RUN npm install
 
+# Copy the rest of React code
+COPY backend/ ./
+RUN npm run build
+
+# ---------- Django stage ----------
+FROM python:3.11
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    && rm -rf /var/lib/apt/lists/*
+# Install dependencies
+COPY requirements.txt ./
+RUN pip install --upgrade pip && pip install -r requirements.txt
 
-COPY porfolio/requirements.txt .
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+# Copy Django project
+COPY . /app/
 
-COPY porfolio /app/porfolio
-WORKDIR /app/porfolio
+# Copy React build into Django project
+COPY --from=react-build /app/frontend/build /app/porfolio/backend/build
 
-RUN python manage.py collectstatic --noinput
+# Collect static files
+RUN python porfolio/manage.py collectstatic --noinput
 
-EXPOSE 8000
-
-CMD ["gunicorn", "porfolio.wsgi:application", "--bind", "0.0.0.0:8000"]
+# Expose port (Render sets $PORT automatically)
+CMD ["gunicorn", "porfolio.wsgi:application", "--bind", "0.0.0.0:$PORT"]

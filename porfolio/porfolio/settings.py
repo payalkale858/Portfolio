@@ -82,12 +82,7 @@ WSGI_APPLICATION = "porfolio.wsgi.application"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-
-        # React build folder
-        "DIRS": [
-            os.path.join(BASE_DIR, "../backend/build")
-        ],
-
+        "DIRS": [os.path.join(BASE_DIR, "backend/build")],  # React build folder
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -98,7 +93,6 @@ TEMPLATES = [
         },
     },
 ]
-
 
 # =====================
 # DATABASE
@@ -139,14 +133,12 @@ USE_TZ = True
 # =====================
 
 STATIC_URL = "/static/"
-
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "../backend/build/static")
+    os.path.join(BASE_DIR, "backend/build/static")  # React static files
 ]
-
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 
 
 # =====================
@@ -167,9 +159,9 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 # CORS
 # =====================
 
+# CORS
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "https://portfolio-2-rhcs.onrender.com",
+    "https://portfolio-6-a39q.onrender.com",  # Your Render URL
 ]
 
 
