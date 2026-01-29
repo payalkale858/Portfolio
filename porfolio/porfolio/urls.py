@@ -20,7 +20,7 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-   path('contact/', include('app.urls')),  # API endpoints from your app
-    re_path(r'^.*$', TemplateView.as_view(template_name='index.html')),  # React frontend catch-all
-
+    path('contact/', include('app.urls')),  # /contact/ -> contact_create
+    re_path(r'^(?!admin/|contact/).*$', TemplateView.as_view(template_name='index.html')),
 ]
+
