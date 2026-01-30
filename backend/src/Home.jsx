@@ -1,9 +1,6 @@
-import React from 'react'
-import { useEffect } from 'react';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export default function Home() {
-  
   const typingSpeed = 100; // speed of typing in ms
   const deletingSpeed = 50; // speed of deleting in ms
   const delayBetweenRoles = 1000; // pause before deleting
@@ -13,8 +10,10 @@ export default function Home() {
   const [charIndex, setCharIndex] = useState(0);
   const [deleting, setDeleting] = useState(false);
 
+  // Define roles outside useEffect
+  const roles = ["Full-Stack Web Developer", "Python Developer", "Backend Developer"];
+
   useEffect(() => {
-    const roles = ["Full-Stack Web Developer", "Python Developer", "Backend Developer"];
     let timeout;
 
     if (!deleting && charIndex <= roles[roleIndex].length) {
@@ -37,25 +36,25 @@ export default function Home() {
     }
 
     return () => clearTimeout(timeout);
-  }, [charIndex, deleting, roleIndex, roles]);
+  }, [charIndex, deleting, roleIndex]); // ✅ removed roles from dependencies
+
   return (
-    <div  className='text-center' id='home'>
-       <p className='fs-1 fw-bold gradient-text'>HI I'AM PAYAL</p>
-       <p className="fs-2 typing-text" style={{ color: "#ffc107" }}>
+    <div className='text-center' id='home'>
+      <p className='fs-1 fw-bold gradient-text'>HI I'AM PAYAL</p>
+      <p className="fs-2 typing-text" style={{ color: "#ffc107" }}>
         {displayText}
         <span className="cursor">|</span>
       </p>
-      <p className='fw-bold fs-5'>A passionate developer dedicated to building responsive, scalable, and user-friendly web applications.
-         I enjoy turning ideas into real-world digital solutions using modern technologies.</p>
-       <div className="mt-5">
-  <a href="/resume.pdf" download="Payal_Resume.pdf" className="btn btn-outline-primary me-2"
->
-  Download Resume
-</a>
-
-
+      <p className='fw-bold fs-5'>
+        A passionate developer dedicated to building responsive, scalable, and user-friendly web applications.
+        I enjoy turning ideas into real-world digital solutions using modern technologies.
+      </p>
+      <div className="mt-5">
+        <a href="/resume.pdf" download="Payal_Resume.pdf" className="btn btn-outline-primary me-2">
+          Download Resume
+        </a>
         <button className="btn btn-outline-warning">Contact Me</button>
       </div>
-</div>
-  )
+    </div>
+  );
 }
