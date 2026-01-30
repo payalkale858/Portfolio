@@ -6,9 +6,9 @@ from django.core.mail import send_mail
 from django.conf import settings
 from .serializers import ContactSerializer
 from .models import Contact
-from django.views.decorators.csrf import csrf_exempt
 
-@csrf_exempt
+
+
 @api_view(['GET','POST'])
 def contact_create(request):
     if request.method == 'GET':

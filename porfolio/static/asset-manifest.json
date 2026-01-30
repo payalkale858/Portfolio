@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/static/css/main.bb992ca6.css",
+    "main.js": "/static/js/main.31630e6b.js",
+    "static/js/453.7db12e1b.chunk.js": "/static/js/453.7db12e1b.chunk.js",
+    "static/media/recipe_finder.png": "/static/media/recipe_finder.60aa88bd55d926857154.png",
+    "static/media/todo.png": "/static/media/todo.aef210b9b2f96cb53606.png",
+    "static/media/image-payal.jpg": "/static/media/image-payal.43190b406ac16abe7c02.jpg",
+    "static/media/weather_app.png": "/static/media/weather_app.8ecdbc87820b08ecd46a.png",
+    "static/media/password_strength.png": "/static/media/password_strength.04f5ef10e85d9d273855.png",
+    "static/media/age_calculator.png": "/static/media/age_calculator.ed64878437d04bd30d34.png",
+    "index.html": "/index.html",
+    "main.bb992ca6.css.map": "/static/css/main.bb992ca6.css.map",
+    "main.31630e6b.js.map": "/static/js/main.31630e6b.js.map",
+    "453.7db12e1b.chunk.js.map": "/static/js/453.7db12e1b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bb992ca6.css",
+    "static/js/main.31630e6b.js"
+  ]
+}

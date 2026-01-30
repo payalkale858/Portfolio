@@ -1,31 +1,38 @@
-# ---------- React build stage ----------
+# Stage 1: Build React
 FROM node:18 AS react-build
 WORKDIR /app/frontend
 
-# Copy only package files first
-COPY porfolio/package*.json ./
+# Copy package.json and package-lock.json from React app
+COPY backend/package*.json ./
+
+# Install dependencies
 RUN npm install
 
-# Copy all React code
-COPY porfolio/ ./
+# Copy all React source code
+COPY backend/ ./
+
+# Build React
 RUN npm run build
 
-# ---------- Django stage ----------
-FROM python:3.11
+# Stage 2: Django
+FROM python:3.12
+
 WORKDIR /app
 
-# Install Python dependencies
+# Copy requirements and install
 COPY porfolio/requirements.txt ./
+
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
 # Copy Django project
-COPY porfolio/ /app/porfolio/
+COPY porfolio/ ./porfolio
 
-# Copy React build into Django
+# After React build
 COPY --from=react-build /app/frontend/build /app/porfolio/backend/build
+
 
 # Collect static files
 RUN python porfolio/manage.py collectstatic --noinput
 
-# Expose port
+# Run Django with gunicorn
 CMD ["gunicorn", "porfolio.wsgi:application", "--bind", "0.0.0.0:$PORT"]

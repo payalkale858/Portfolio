@@ -1,7 +1,3 @@
-
-
-
-
 """
 Django settings for porfolio project.
 """
@@ -12,7 +8,6 @@ import os
 # Base directory
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # =====================
 # SECURITY
 # =====================
@@ -22,14 +17,13 @@ SECRET_KEY = os.environ.get(
     "django-insecure-change-this-in-production"
 )
 
-DEBUG = False
+DEBUG =False
 
 ALLOWED_HOSTS = [
     "portfolio-2-rhcs.onrender.com",
     "localhost",
     "127.0.0.1",
 ]
-
 
 # =====================
 # APPLICATIONS
@@ -48,7 +42,6 @@ INSTALLED_APPS = [
     "app",
 ]
 
-
 # =====================
 # MIDDLEWARE
 # =====================
@@ -66,14 +59,12 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-
 # =====================
 # URLS / WSGI
 # =====================
 
 ROOT_URLCONF = "porfolio.urls"
 WSGI_APPLICATION = "porfolio.wsgi.application"
-
 
 # =====================
 # TEMPLATES (React)
@@ -82,7 +73,7 @@ WSGI_APPLICATION = "porfolio.wsgi.application"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, "backend/build")],  # React build folder
+        "DIRS": [BASE_DIR / "templates"],  # React build folder
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -105,7 +96,6 @@ DATABASES = {
     }
 }
 
-
 # =====================
 # PASSWORD VALIDATION
 # =====================
@@ -117,7 +107,6 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
-
 # =====================
 # INTERNATIONALIZATION
 # =====================
@@ -127,22 +116,15 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True
 
-
 # =====================
 # STATIC FILES (React)
 # =====================
-
-STATIC_URL = "/static/"
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "backend/build/static")  # React static files
-]
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_URL = '/static/' 
+STATICFILES_DIRS = [ BASE_DIR / "static", ] 
+STATIC_ROOT = BASE_DIR / "staticfiles" # Whitenoise storage for compressed static files 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
-
-
 # =====================
-# EMAIL CONFIG (MOVE TO ENV LATER)
+# EMAIL CONFIG
 # =====================
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
@@ -150,24 +132,20 @@ EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+EMAIL_HOST_USER = "kalepayal53@gmail.com"
+EMAIL_HOST_PASSWORD = "kxhj zkzv fods befs"
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-
 # =====================
 # CORS
 # =====================
 
-# CORS
 CORS_ALLOWED_ORIGINS = [
     "https://portfolio-6-a39q.onrender.com",  # Your Render URL
 ]
-
 
 # =====================
 # DEFAULT PK
 # =====================
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
