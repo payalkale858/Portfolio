@@ -1,0 +1,583 @@
+/* =========================
+   GLOBAL STYLES
+========================= */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #133457;
+  font-family: Arial, sans-serif;
+  scroll-behavior: smooth;
+  /* smooth scroll for section links */
+}
+
+#home {
+  color: beige;
+}
+
+#app {
+  background-color: #133457;
+}
+
+/* =========================
+   SIDEBAR (DESKTOP)
+========================= */
+.nav-icon {
+  font-size: 18px;
+  color: #ffbb00;
+  transition: transform 0.3s ease;
+}
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 240px;
+  height: 100vh;
+  margin-top: 20px;
+  background-color: #0b2b4c;
+  padding: 20px;
+
+  display: block;
+  /* visible on desktop */
+  z-index: 999;
+  transition: transform 0.3s ease;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  border-radius: 0 12px 12px 0;
+}
+
+.sidebar-logo {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.sidebar-logo-img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #000;
+}
+
+.sidebar-nav {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar-link:hover {
+  color: #ffbb00;
+  /* hover color */
+}
+
+.nav-icon:hover {
+  color: #000;
+  font-size: 18px;
+  /* size of icon */
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  gap: 40px;
+  color: #efdbdb;
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
+  padding-bottom: 5px;
+  font-size: 18px;
+  padding: 7px 20px;
+  /* 10px top/bottom, 16px left/right */
+  border-radius: 8px;
+  /* rounded corners */
+
+  transition: all 0.3s ease;
+}
+
+.sidebar-link:hover .nav-icon {
+  color: black;
+  /* icon turns black on hover */
+  transition: color 0.3s ease;
+  /* smooth color transition */
+}
+
+.sidebar-link:hover {
+  color: #100101;
+  /* optional: change text color */
+  background-color: #ffbb00;
+  /* new background color on hover */
+  transform: translateX(3px);
+  /* optional: subtle movement */
+}
+
+/* =========================
+   SECTIONS
+========================= */
+section {
+  margin-top: 20px;
+  margin-left: 260px;
+  /* space for sidebar on desktop */
+  margin-right: 25px;
+  min-height: 90vh;
+  padding: 40px;
+  color: #f8f9fa;
+  background-color: #0b2b4c;
+  border-radius: 12px;
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.12),
+    0 6px 10px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+/* =========================
+   BACK TO TOP BUTTON
+========================= */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: none;
+  background-color: #ff4d4d;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 999;
+}
+
+/* =========================
+   GRADIENT TEXT
+========================= */
+.gradient-text {
+  font-size: 3rem;
+  font-weight: bold;
+  background: linear-gradient(135deg, #f5e80a, #ca6420);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+/* =========================
+   LOGO LINE/DOT
+========================= */
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border: 3px solid #ffbb00;
+  border-radius: 50%;
+}
+
+.line {
+  width: 80px;
+  height: 3px;
+  background-color: #ffbb00;
+  margin-left: 10px;
+}
+
+/* =========================
+   ABOUT SECTION
+========================= */
+
+
+#aboute ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+#aboute ul li {
+  color: beige;
+  margin-bottom: 8px;
+}
+
+/* =========================
+   HAMBURGER BUTTON
+========================= */
+.hamburger {
+  display: none;
+  /* hidden on desktop */
+  position: fixed;
+  top: 4px;
+  right: 20px;
+  font-size: 26px;
+  color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+/* =========================
+   RESPONSIVE (MOBILE)
+========================= */
+.mobile-topbar {
+  display: none;
+}
+
+@media (max-width: 990px) {
+
+  /* Show top bar */
+  .mobile-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: #052446;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1002;
+  }
+
+  /* Hamburger visible */
+  .hamburger {
+    display: block;
+  }
+
+
+  /* Sidebar hidden by default */
+  .sidebar {
+    transform: scaleY(0);
+    /* collapsed */
+    top: 60px;
+    right: 20px;
+    left: auto;
+    width: 200px;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  /* Sidebar open when hamburger clicked */
+  .sidebar.open {
+    transform: scaleY(1);
+  }
+
+  /* Center sections on mobile */
+  section {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+  }
+
+  /* Optional: hide sidebar logo on mobile */
+  .sidebar-logo {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/* Default: hide mobile-only elements */
+.mobile-only {
+  display: none !important;
+}
+
+/* Show only on mobile */
+@media (max-width: 990px) {
+  #aboute .mobile-only {
+    display: block !important;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+}
+
+/* =========================
+   skills
+/* Main skills section */
+#skill {
+  width: 100%;
+  padding: 20px;
+}
+
+/* Inner wrapper (keeps headings left) */
+#skill>div {
+  max-width: 1000px;
+  margin: 0 auto;
+  /* centers the whole block */
+}
+
+/* Headings stay LEFT */
+
+#skill .logo {
+  text-align: left;
+}
+
+/* Skills container centered */
+.con {
+  width: 100%;
+  max-width: 800px;
+  /* container width */
+  margin: 30px auto;
+  /* CENTER the container */
+
+  background: #0b2b4c;
+  padding: 25px;
+  border-radius: 16px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+
+/* Entry animation */
+@keyframes popIn {
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Each skill row */
+.con li {
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+/* Skill title row */
+.con li>div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: beige;
+  margin-bottom: 6px;
+}
+
+/* Progress bar background */
+.bar {
+  width: 100%;
+  height: 8px;
+  background: #1e3a5f;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Bar fill (animated) */
+.bar::after {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #ffbb00, #ff8c00);
+  border-radius: 10px;
+  animation: fillBar 1.4s ease forwards;
+}
+
+/* Bar fill animation */
+@keyframes fillBar {
+  from {
+    width: 0;
+  }
+}
+
+/* Individual skill levels */
+.bar.python::after {
+  width: 85%;
+}
+
+.bar.django::after {
+  width: 80%;
+}
+
+.bar.flask::after {
+  width: 80%;
+}
+
+.bar.js::after {
+  width: 70%;
+}
+
+.bar.react::after {
+  width: 75%;
+}
+
+.bar.sql::after {
+  width: 85%;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .con {
+    padding: 16px;
+  }
+
+  .con h3 {
+    font-size: 14px;
+  }
+}
+
+.info {
+  height: 270px;
+  padding: 20px;
+  width: 450px;
+  background-color: #494745;
+
+
+}
+
+.info li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  margin-bottom: 14px;
+  color: beige;
+}
+
+.info li  {
+  list-style: none;
+  
+}
+
+.info p {
+  color: #ffbb00;
+
+}
+
+
+.cont {
+
+  border-radius: 16px;
+
+  padding: 8px;
+  height: 665px;
+  width: 470px;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  /* CENTER horizontally */
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.social-link {
+  font-size: 24px;
+  color: #ffbb00;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-link:hover {
+  color: #000;
+  transform: scale(1.1);
+}
+/* 
+----------------------------------
+education 
+--------------------- */
+.education-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 10px;
+}
+
+.education-heading {
+  text-align: center;
+  color: #ffbb00;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.education-item {
+  background-color: #0b2b4c;
+  color: #fff;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
+  cursor: pointer;
+}
+
+
+
+.edu-year {
+  color: #ffbb00;
+  margin-bottom: 5px;
+}
+
+.edu-title {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.edu-description {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+/* -------------------------
+project
+------------------------- */
+.projects-container {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 0 20px;
+}
+
+.projects-heading {
+  text-align: center;
+  color: #ffbb00;
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+.project-card {
+  background-color: #0b2b4c;
+  color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 30px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.project-card:hover {
+  transform: rotateY(10deg);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.project-img {
+  width: 75%;
+  height: 375px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.project-card h3 {
+  margin-bottom: 10px;
+}
+
+.project-card p {
+  margin-bottom: 15px;
+}
+
+.links a {
+  display: inline-block;
+  background-color: #ffbb00;
+  color: #0b2b4c;
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.links a:hover {
+  background-color: #ffc633;
+}
