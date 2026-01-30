@@ -18,11 +18,9 @@ SECRET_KEY = os.environ.get(
 )
 
 DEBUG =False
-
 ALLOWED_HOSTS = [
-    "portfolio-2-rhcs.onrender.com",
-    "localhost",
-    "127.0.0.1",
+    ".onrender.com",  # allow all Render subdomains
+    "portfolio-19-mhl4.onrender.com",  # your specific service URL
 ]
 
 # =====================
