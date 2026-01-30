@@ -17,7 +17,7 @@ SECRET_KEY = os.environ.get(
     "django-insecure-change-this-in-production"
 )
 
-DEBUG =True
+DEBUG =False
 ALLOWED_HOSTS = [
     ".onrender.com",  # allow all Render subdomains
     "portfolio-19-mhl4.onrender.com",  # your specific service URL
