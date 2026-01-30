@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 
 export default function Home() {
-  const roles = ["Full-Stack Web Developer", "Python Developer", "Backend Developer"];
+  
   const typingSpeed = 100; // speed of typing in ms
   const deletingSpeed = 50; // speed of deleting in ms
   const delayBetweenRoles = 1000; // pause before deleting
@@ -14,6 +14,7 @@ export default function Home() {
   const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
+    const roles = ["Full-Stack Web Developer", "Python Developer", "Backend Developer"];
     let timeout;
 
     if (!deleting && charIndex <= roles[roleIndex].length) {
