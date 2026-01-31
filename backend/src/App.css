@@ -554,8 +554,7 @@ project
 .project-img {
   width: 75%;
   height: 375px;
-  object-fit: cover;
-  border-radius: 10px;
+   border-radius: 10px;
   margin-bottom: 15px;
 }
 
