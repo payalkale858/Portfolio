@@ -117,6 +117,9 @@ USE_TZ = True
 # =====================
 # STATIC FILES (React)
 # =====================
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 STATIC_URL = '/static/' 
 STATICFILES_DIRS = [ BASE_DIR / "static", ] 
 STATIC_ROOT = BASE_DIR / "staticfiles" # Whitenoise storage for compressed static files 

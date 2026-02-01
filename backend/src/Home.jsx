@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useMemo } from "react";
 
+
+
 export default function Home() {
   const typingSpeed = 100;
   const deletingSpeed = 50;
@@ -39,7 +41,13 @@ export default function Home() {
 
     return () => clearTimeout(timeout);
   }, [charIndex, deleting, roleIndex, roles]);
+  const scrollToSection = (id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
 
+    }
+  };
   return (
     <div className="text-center" id="home">
       <p className="fs-1 fw-bold gradient-text">HI I'AM PAYAL</p>
@@ -53,10 +61,20 @@ export default function Home() {
         technologies.
       </p>
       <div className="mt-5">
-        <a href="/resume.pdf" download="Payal_Resume.pdf" className="btn btn-outline-primary me-2">
+        <a
+          href="https://drive.google.com/uc?export=download&id=1A03wPZFGEL7tnn5kGQLuIHixz6h7D5FT"
+          download
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-outline-primary me-2"
+        >
           Download Resume
         </a>
-        <button className="btn btn-outline-warning">Contact Me</button>
+
+
+
+        <button className="btn btn-outline-warning" onClick={() => scrollToSection('resume')}> Contact Us</button>
+
       </div>
     </div>
   );
