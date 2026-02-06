@@ -17,7 +17,6 @@
 #     re_path(r'^(?!admin/|contact/).*$', TemplateView.as_view(template_name='index.html')),
 # ]
 
-
 from django.contrib import admin
 from django.urls import path, include, re_path
 from django.views.generic import TemplateView
@@ -26,14 +25,14 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('contact/', include('app.urls')),
+    path('contact/', include('app.urls')),  # API
 ]
 
-# serve static in dev
+# Static files (dev only)
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
-# React routes fallback (MUST BE LAST)
+# React fallback (MUST be last)
 urlpatterns += [
     re_path(r'^.*$', TemplateView.as_view(template_name="index.html")),
 ]

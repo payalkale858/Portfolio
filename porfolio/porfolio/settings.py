@@ -45,10 +45,11 @@ INSTALLED_APPS = [
 # =====================
 
 MIDDLEWARE = [
+     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
 
-    "corsheaders.middleware.CorsMiddleware",
+   
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -142,7 +143,8 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 # =====================
 
 CORS_ALLOWED_ORIGINS = [
-    "https://portfolio-6-a39q.onrender.com",  # Your Render URL
+    "https://portfolio-19-a39q.onrender.com",
+      "http://localhost:3000",  # Your Render URL
 ]
 
 # =====================

@@ -453,7 +453,7 @@ section {
   border-radius: 16px;
 
   padding: 8px;
-  height: 665px;
+  height: 722px;
   width: 470px;
 }
 
@@ -579,4 +579,11 @@ project
 
 .links a:hover {
   background-color: #ffc633;
+}
+
+
+@media (max-width: 576px) {
+  .footer a {
+    font-size: 1.5rem;
+  }
 }

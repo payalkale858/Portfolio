@@ -35,7 +35,7 @@ function App() {
       <section id="resume">
         <Resume />
       </section>
-      <button class='back-to-top'  onClick={()=>{nav(-1)}}>back</button>
+      <button className='back-to-top'  onClick={()=>{nav(-1)}}>back</button>
     </div>
   );
 }

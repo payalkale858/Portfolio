@@ -73,7 +73,7 @@ export default function Home() {
 
 
 
-        <button className="btn btn-outline-warning" onClick={() => scrollToSection('resume')}> Contact Us</button>
+        <button className="btn btn-outline-warning" onClick={() => scrollToSection('resume')}> Contact Me </button>
 
       </div>
     </div>

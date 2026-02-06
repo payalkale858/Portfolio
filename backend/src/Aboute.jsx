@@ -14,7 +14,7 @@ export default function Aboute() {
       <p className='fs-5 mt-5' style={{ color: 'beige' }}>  <b>H</b>i, I’m Payal Kale, a Python & Full-Stack Developer with hands-on experience in building scalable web applications.I work with React, JavaScript, HTML, CSS, and backend technologies like Django, Flask, and REST APIs, along with SQL databases.I am eager to apply my technical skills in an organization,gain hands-on experience, and grow as a developer while learning from real-world projects.</p>
       <ul className='mt-4'>
         <li>
-          <strong className='fs-5 fw-bold me-3' style={{ color: '#ffbb00' }}>Name:</strong> Payal Kale
+          <strong className='fs-5 fw-bold me-3' style={{ color: '#ffbb00' }}>Name:</strong> Payal Keshav Kale
         </li>
         <li>
           <strong className='fs-5 fw-bold me-3' style={{ color: '#ffbb00' }}>Degree:</strong> M.Sc in Computer Science (CGPA: 8.2)

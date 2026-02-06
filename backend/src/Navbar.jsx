@@ -62,7 +62,7 @@ export default function Navbar() {
 
           </li>
           <li>
-            <button className="sidebar-link" onClick={() => scrollToSection('resume')}><FaFileAlt className="nav-icon" ></FaFileAlt>Contact Us</button>
+            <button className="sidebar-link" onClick={() => scrollToSection('resume')}><FaFileAlt className="nav-icon" ></FaFileAlt>Contact Me</button>
             
           </li>
         </ul>
